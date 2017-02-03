@@ -1,0 +1,21 @@
+language: python
+python: 3.5
+
+branches:
+  except:
+    - master
+
+install:
+  - pip install -r requirements.txt
+
+script:
+  - sphinx-build -W . _build
+
+after_success:
+  - if [[ $TRAVIS_BRANCH == 'src' ]]; then
+      export DATE=$(date '+%Y-%m-%d %T');
+      git config --global user.name "TravisCI job";
+      git config --global user.email "tbekolay+travisci@gmail.com";
+      ghp-import -m "Last update at $DATE" -b master _build;
+      git push -fq "https://$GH_TOKEN@github.com/nengo/design.git" master;
+    fi
