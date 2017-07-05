@@ -34,7 +34,6 @@ pygments_style = "sphinx"
 templates_path = ["_templates"]
 html_favicon = "general/favicon.ico"
 html_static_path = ["_static"]
-html_use_smartypants = True
 
 html_theme_path = guzzle_sphinx_theme.html_theme_path()
 html_theme = "guzzle_sphinx_theme"
